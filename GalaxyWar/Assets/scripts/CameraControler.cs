@@ -21,6 +21,9 @@ public class CameraControler : MonoBehaviour
 
     [SerializeField]
     private Transform cameraTransform;
+
+    [SerializeField]
+    private float maxZoom;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,5 +80,9 @@ public class CameraControler : MonoBehaviour
 
         if(cameraTransform.localPosition.z > 0)
         cameraTransform.localPosition = new Vector3(cameraTransform.localPosition.x, cameraTransform.localPosition.y, 0);
+
+        if(cameraTransform.localPosition.z < maxZoom && maxZoom != 0)
+        cameraTransform.localPosition = new Vector3(cameraTransform.localPosition.x, cameraTransform.localPosition.y, maxZoom);
+
     }
 }
